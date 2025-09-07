@@ -49,10 +49,18 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <div id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-card/30" />
+      <div className="absolute inset-0 bg-gradient-to-br from-ivory via-khaki/20 to-camel/30" />
       <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] opacity-5" />
+
+      {/* Floating animated shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-20 h-20 bg-camel/20 rounded-full animate-float" />
+        <div className="absolute top-40 right-20 w-16 h-16 bg-deep-green/10 rounded-full animate-float" style={{ animationDelay: "1s" }} />
+        <div className="absolute bottom-40 left-20 w-24 h-24 bg-khaki/15 rounded-full animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute bottom-20 right-10 w-12 h-12 bg-camel/25 rounded-full animate-float" style={{ animationDelay: "3s" }} />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -61,30 +69,27 @@ export default function HeroSection() {
             className={`space-y-8 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <div className="space-y-4">
-              <h1 className="text-5xl lg:text-7xl font-serif font-bold text-foreground leading-tight">
-                <span className="inline-block animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+              <h1 className="text-5xl lg:text-7xl font-bodoni font-bold text-deep-green leading-tight">
+                <span className="inline-block">
                   Stop
                 </span>
-                <span className="block text-primary animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+                <span className="block text-deep-green">
                   Embezzlement
                 </span>
-                <span className="block text-secondary animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
+                <span className="block text-camel">
                   Forever
                 </span>
               </h1>
-              <p
-                className="text-xl text-muted-foreground max-w-2xl leading-relaxed animate-fade-in-up"
-                style={{ animationDelay: "0.8s" }}
-              >
+              <p className="text-xl text-deep-green/70 max-w-2xl leading-relaxed font-avenir">
                 AI-audited, multi-sig community treasury that releases funds only after verifiable project milestones.
                 Let members vote via SMS.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: "1s" }}>
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg group"
+                className="bg-deep-green hover:bg-camel text-ivory px-8 py-4 text-lg group font-avenir"
               >
                 Launch Your DAO
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -92,7 +97,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary/10 px-8 py-4 text-lg bg-transparent group"
+                className="border-deep-green text-deep-green hover:bg-deep-green/10 px-8 py-4 text-lg bg-transparent group font-avenir"
                 onClick={() => (window.location.href = "/governance/proposal-demo")}
               >
                 Try Live Demo
@@ -100,20 +105,17 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            <div
-              className="flex items-center gap-8 text-sm text-muted-foreground animate-fade-in-up"
-              style={{ animationDelay: "1.2s" }}
-            >
+            <div className="flex items-center gap-8 text-sm text-deep-green/70 font-avenir">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-chart-1 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-deep-green rounded-full animate-pulse" />
                 <span>$3B+ Protected</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-chart-2 rounded-full animate-pulse" style={{ animationDelay: "0.5s" }} />
+                <div className="w-2 h-2 bg-camel rounded-full animate-pulse" style={{ animationDelay: "0.5s" }} />
                 <span>95% Accuracy</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-chart-3 rounded-full animate-pulse" style={{ animationDelay: "1s" }} />
+                <div className="w-2 h-2 bg-khaki rounded-full animate-pulse" style={{ animationDelay: "1s" }} />
                 <span>Zero Embezzlement</span>
               </div>
             </div>
@@ -131,8 +133,8 @@ export default function HeroSection() {
                     key={index}
                     className={`p-6 transition-all duration-700 cursor-pointer group hover:shadow-xl ${
                       activeFeature === index
-                        ? "bg-primary/10 border-primary shadow-lg scale-105 animate-pulse-border"
-                        : "bg-card hover:bg-card/80 hover:scale-102"
+                        ? "bg-deep-green/10 border-deep-green shadow-lg scale-105 animate-pulse-border"
+                        : "bg-camel hover:bg-khaki/80 hover:scale-102"
                     }`}
                     onClick={() => {
                       setActiveFeature(index)
@@ -146,16 +148,16 @@ export default function HeroSection() {
                       <Icon
                         className={`w-8 h-8 transition-all duration-300 ${
                           activeFeature === index
-                            ? "text-primary animate-bounce"
-                            : `${feature.color} group-hover:scale-110`
+                            ? "text-deep-green animate-bounce"
+                            : "text-deep-green group-hover:scale-110"
                         }`}
                       />
-                      <h3 className="font-serif font-semibold text-card-foreground group-hover:text-primary transition-colors">
+                      <h3 className="font-bodoni font-semibold text-deep-green group-hover:text-deep-green transition-colors">
                         {feature.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                      <p className="text-sm text-deep-green/70 leading-relaxed font-avenir">{feature.description}</p>
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span className="text-xs text-primary font-medium flex items-center gap-1">
+                        <span className="text-xs text-deep-green font-medium flex items-center gap-1 font-avenir">
                           Try Demo <ArrowRight className="h-3 w-3" />
                         </span>
                       </div>
@@ -167,9 +169,9 @@ export default function HeroSection() {
 
             {/* Central Connection Animation */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-4 h-4 bg-primary rounded-full animate-pulse" />
-              <div className="absolute w-16 h-16 border-2 border-primary/30 rounded-full animate-spin-slow" />
-              <div className="absolute w-24 h-24 border border-primary/20 rounded-full animate-ping-slow" />
+              <div className="w-4 h-4 bg-deep-green rounded-full animate-pulse" />
+              <div className="absolute w-16 h-16 border-2 border-deep-green/30 rounded-full animate-spin-slow" />
+              <div className="absolute w-24 h-24 border border-deep-green/20 rounded-full animate-ping-slow" />
             </div>
           </div>
         </div>
@@ -180,11 +182,11 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in-up"
         style={{ animationDelay: "1.5s" }}
       >
-        <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center group cursor-pointer">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-bounce group-hover:animate-pulse" />
+        <div className="w-6 h-10 border-2 border-deep-green/30 rounded-full flex justify-center group cursor-pointer">
+          <div className="w-1 h-3 bg-deep-green rounded-full mt-2 animate-bounce group-hover:animate-pulse" />
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
